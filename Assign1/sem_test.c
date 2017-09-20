@@ -12,7 +12,7 @@ typedef struct semaphore_t {
 } semaphore_t;
 
 void init_sem(semaphore_t *s, int i)
-{   
+{
     s->count = i;
     pthread_mutex_init(&(s->mutex), NULL);
     pthread_cond_init(&(s->cond), NULL);
@@ -21,14 +21,15 @@ void init_sem(semaphore_t *s, int i)
 
 /*
  * The P routine decrements the semaphore, and if the value is less than
- * zero then blocks the process 
+ * zero then blocks the process
  */
 void P(semaphore_t *sem)
-{   
-    pthread_mutex_lock (&(sem->mutex)); 
+{
+    pthread_mutex_lock (&(sem->mutex));
     sem->count--;
+    // printf("%d \n",sem->count);
     if (sem->count < 0) pthread_cond_wait(&(sem->cond), &(sem->mutex));
-    pthread_mutex_unlock (&(sem->mutex)); 
+    pthread_mutex_unlock (&(sem->mutex));
 }
 
 
@@ -38,13 +39,13 @@ void P(semaphore_t *sem)
  */
 
 void V(semaphore_t * sem)
-{   
-    pthread_mutex_lock (&(sem->mutex)); 
+{
+    pthread_mutex_lock (&(sem->mutex));
     sem->count++;
     if (sem->count <= 0) {
-	pthread_cond_signal(&(sem->cond));
+	  pthread_cond_signal(&(sem->cond));
     }
-    pthread_mutex_unlock (&(sem->mutex)); 
+    pthread_mutex_unlock (&(sem->mutex));
     pthread_yield();
 }
 
@@ -53,7 +54,7 @@ semaphore_t mutex;
 
 void function_1(void)
 {
-    while (1){ 
+    while (1){
         P(&mutex);
         printf("Beginning of CS: func 1\n");
         sleep(1);
@@ -61,11 +62,11 @@ void function_1(void)
         sleep(1);
 	V(&mutex);
     }
-}    
+}
 
 void function_2(void)
 {
-    while (1){ 
+    while (1){
         P(&mutex);
         printf("Beginning of CS: func 2\n");
         sleep(1);
@@ -73,11 +74,11 @@ void function_2(void)
         sleep(1);
 	V(&mutex);
     }
-}    
+}
 
 void function_3(void)
 {
-    while (1){ 
+    while (1){
         P(&mutex);
         printf("Beginning of CS: func 3\n");
         sleep(1);
@@ -85,7 +86,7 @@ void function_3(void)
         sleep(1);
 	V(&mutex);
     }
-}    
+}
 
 int main()
 {
@@ -99,7 +100,3 @@ int main()
 
     return 0;
 }
-
-
-
-
