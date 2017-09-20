@@ -16,9 +16,10 @@ void function_1(int *arg)
         sleep(1);
         global++; local ++;
         printf("Function 1 incremented .... global = %d  local = %d\n", global, local);
+        printf("Thread ID: %ld \n",pthread_self());
         sleep(1);
     }
-}    
+}
 
 void function_2(int *arg)
 {
@@ -31,7 +32,7 @@ void function_2(int *arg)
         printf("Function 2 incremented .... global = %d  local = %d\n", global, local);
         sleep(1);
     }
-}    
+}
 
 void function_3(int *arg)
 {
@@ -44,7 +45,7 @@ void function_3(int *arg)
         printf("Function 3 incremented .... global = %d  local = %d\n", global, local);
         sleep(1);
     }
-}    
+}
 
 pthread_t start_thread(void *func, int *arg)
   {
@@ -63,15 +64,18 @@ pthread_t start_thread(void *func, int *arg)
 int main()
 {  int arg;
 
-    arg = 25; start_thread(function_1, &arg);
-    arg = 50; start_thread(function_1, &arg); // there is a serious bug here, left it in for demo purposes
-    arg = 100; start_thread(function_1, &arg);
+    arg = 25;
+     start_thread(function_1, &arg);
+     // sleep(1);
+    arg = 50;
+     start_thread(function_1, &arg); // there is a serious bug here, left it in for demo purposes
+     // sleep(1);
+    arg = 100;
+     start_thread(function_1, &arg);
+    arg = 150;
+     start_thread(function_1, &arg);
 
     while(1) sleep(1); // infinite loop
 
     return 0;
 }
-
-
-
-
