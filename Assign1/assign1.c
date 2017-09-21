@@ -55,9 +55,9 @@ int main()
 
     start_thread(prod, &id[0]);
 
-    start_thread(prod, &id[2]);
+    start_thread(prod, &id[1]);
 
-    start_thread(prod, &id[4]);
+    start_thread(prod, &id[2]);
 
     while(1){
 
@@ -73,7 +73,6 @@ int main()
         sleep(cons_delay);
     }
 
-      while (1) { scanf("%d %d", &prod_delay, &cons_delay);
-                printf ("\n\n\t\t\t\tP=%d C=%d\n\n\n", prod_delay, cons_delay);
-    };
+
+  
 }
