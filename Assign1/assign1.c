@@ -18,7 +18,7 @@ void prod (int *arg)
 
         P(&empty);
           P(&mutex);
-          printf("Writing... \n");
+          printf("Writing... %d \n",*arg);
 
                buffer[*arg]++;
                counter++;
@@ -35,7 +35,7 @@ void prod (int *arg)
 
 int main()
 {
-    int id[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8,};
+    int id[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
     buffer[0] = 0;
     buffer[1] = 0;
     buffer[2] = 0;
