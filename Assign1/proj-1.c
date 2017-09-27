@@ -1,11 +1,11 @@
-// (c) Partha Dasgupta 2009
+// Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
 // permission to use and distribute granted.
-
+// 
 #include <stdio.h>
 #include <stdlib.h>
 #include "sem.h"
 
-#define N 4
+#define N 3
 semaphore_t empty, full, mutex;
 int buffer[N];
 int counter = 0;
@@ -18,7 +18,7 @@ void prod (int *arg)
 
         P(&empty);
           P(&mutex);
-          printf("Writing... %d \n",*arg);
+          printf("Writing child Thread # %d \n",*arg);
 
                buffer[*arg]++;
                counter++;
@@ -35,7 +35,7 @@ void prod (int *arg)
 
 int main()
 {
-    int id[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    int id[3] = {0, 1, 2};
     buffer[0] = 0;
     buffer[1] = 0;
     buffer[2] = 0;
@@ -50,12 +50,11 @@ int main()
 
     start_thread(prod, &id[2]);
 
-
     while(1){
 
         P(&full);
           P(&mutex);
-            printf("Reading...\n");
+            printf("Reading from parent...\n");
         	    for(int i=0;i<3;i++){
                 printf("%d ",buffer[i]);
                 V(&empty);
