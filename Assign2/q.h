@@ -15,14 +15,33 @@ void InitQ(TCB_t* q){
 
 void AddQ(TCB_t* q,TCB_t* ele){
   InitQ(ele);
-  TCB_t* runner = q;
+  TCB_t* temp = q->prev;
   if(q==NULL){
     q = ele;
   }else{
-    while(runner->next!=NULL){
-      runner = runner->next;
-    }
-    runner->next = ele;
-    ele->prev = runner;
+    temp->next = ele;
+    ele->prev = temp;
+    ele->next = q;
+    q->prev = ele;
   }
+}
+
+TCB_t* DelQ(TCB_t* q){
+  TCB_t temp;
+  if(q == NULL){
+    return NULL;
+  }else{
+    temp = q;
+    q = q-> next;
+    if(q==temp){
+      q = NULL;
+      free(temp);
+      return NULL;
+    }else{
+      temp->prev->next = q;
+      q->prev = temp->prev;
+      free(temp);
+    }
+  }
+  return temp;
 }
