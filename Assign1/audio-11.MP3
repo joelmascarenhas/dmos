@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<title>ALERT!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<style>
+#content{
+        border: 3px solid#aaa;
+        background-color: #990033;
+        margin: 40;
+        padding: 40;
+        font-family: Tahoma,Helvetica,Arial,sans-serif;
+        font-size: 12px;
+        color: #FC0;
+}
+  h1{
+        font-size: 20px;
+        font-weight: bold;
+        color: #FFFFFF;
+        float: none;
+}
+  b{font-weight:bold;color:#FFFFFF;}
+</style>
+</head>
+<body bgcolor="#e7e8e9">
+<body link="#C0C0C0" vlink="#808080" alink="#FF0000">
+<div id="content">
+<center><img src="https://getprotected.asu.edu/sites/default/files/Alert.png" width="88" height="112" /></center>
+<p id="asu-text"></p>
+<script>
+var blockcat = "Any to Admin Deny All";
+switch (blockcat)
+{
+	case 'Guest WIFI block ASU Resources':
+		document.getElementByID("asu-text").innerHTML = "<h1>ASU Guest Restrictions</h1><p>You reached this page because you appear to be attempting to access an ASU Service that requiest an ASURITE login from the \"asu_guest\" wireless network.</p><p>All ASU Affiliates should connect to wireless using our secure network, \"asu_encrypted\".  To set up \"asu_encrypted\" service go to: <a href=\"https://www.asu.edu/wifi\">https://www.asu.edu/wifi</a></p><p>ASU Affiliates can also use the \"asu\" wireless network (not encrypted) if needed."
+		break;
+	default:
+		document.getElementByID("asu-text").innerHTML = "<h1>Blocked Application</h1> <p>Access to this application has been restricted to protect university resources from malicious activity.  Please contact <a href="mailto:infosec@asu.edu">infosec@asu.edu</a> if you have question or believe you have received this message in error.  </p> <p><b>Action Type Blocked: Application</b> http-audio </p>"
+		break;
+}
+</script>
+</div> 
+</body> 
+</html>
