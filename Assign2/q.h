@@ -13,8 +13,8 @@ TCB_t* newQueue(){
 
 TCB_t* newItem(){
   TCB_t* q = (TCB_t*) malloc(sizeof(TCB_t));
-  q->prev = NULL;
-  q->next = NULL;
+  q->prev = q;
+  q->next = q;
   return q;
 }
 
@@ -68,5 +68,5 @@ TCB_t* DelQueue(TCB_t* q)
       free(temp);
       }
   }
-  return temp;
+  return q;
 }
