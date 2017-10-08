@@ -21,7 +21,7 @@ void start_thread(void *func)
 
   //call addQ to add this TCB into the “ReadyQ” which is a global header pointer
 	AddQueue(ReadyQ, tcb_object);
-	printf("Thread %d created\n",thread_id_counter);
+	printf("Thread %d created \n",thread_id_counter);
 }
 
 void run()
@@ -51,4 +51,8 @@ void createQueue()
 void printThread_id(TCB_t *tcb_object)
 {
   printf("Printing Thread %d\n",tcb_object->thread_id);
+}
+
+int currentThreadId(){
+  return Curr_Thread->thread_id;
 }
