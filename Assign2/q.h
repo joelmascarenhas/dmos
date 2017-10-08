@@ -46,27 +46,25 @@ void AddQueue(TCB_t* q,TCB_t* ele)
 
 TCB_t* DelQueue(TCB_t* q)
 {
-  TCB_t *temp;
+  TCB_t *temp = q->next;
   if(q == NULL)
     {
     return NULL;
     }
   else
     {
-    temp = q;
-    q = q-> next;
-    if(q==temp)
-      {
-      q = NULL;
-      free(temp);
-      return NULL;
-      }
-    else
-      {
-      temp->prev->next = q;
-      q->prev = temp->prev;
-      free(temp);
-      }
+      q->next = temp->next;
+      temp->next->prev = q;
+    }
+  return temp;
+}
+
+int sizeOfQ(TCB_t* head){
+  int counter = 1;
+  TCB_t* temp=head->next;
+  while(temp!=head){
+    temp = temp->next;
+    counter++;
   }
-  return q;
+  return counter;
 }

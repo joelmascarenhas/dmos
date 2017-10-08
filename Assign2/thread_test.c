@@ -6,10 +6,9 @@ void IncrementFunction1()
 	int local_count = 0;
 	while(1)
 	{
-    printf("XXXX Printing from IncrementFunction 1 XXXX");
     global_count++;
 		local_count++;
-    printf("Global Counter value = %d and Local Counter value = %d\n", global_count, local_count);
+    printf("\n\n Printing from Thread# %d :- Global value = %d and Local value = %d\n",currentThreadId(), global_count, local_count);
 		sleep(1);
 		yield();
 	}
@@ -20,10 +19,9 @@ void IncrementFunction2()
 	int local_count = 0;
 	while(1)
 	{
-    printf("XXXX Printing from IncrementFunction 2 XXXX");
     global_count++;
 		local_count++;
-    printf("Global Counter value = %d and Local Counter value = %d\n", global_count, local_count);
+    printf("\n\n Printing from Thread# %d :- Global value = %d and Local value = %d\n",currentThreadId(), global_count, local_count);
 		sleep(1);
 		yield();
 	}
@@ -34,10 +32,9 @@ void IncrementFunction3()
 	int local_count = 0;
 	while(1)
 	{
-    printf("XXXX Printing from IncrementFunction 3 XXXX");
     global_count++;
 		local_count++;
-    printf("Global Counter value = %d and Local Counter value = %d\n", global_count, local_count);
+    printf("\n\n Printing from Thread# %d :- Global value = %d and Local value = %d\n",currentThreadId(), global_count, local_count);
 		sleep(1);
 		yield();
 	}
