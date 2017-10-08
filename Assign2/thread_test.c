@@ -1,3 +1,5 @@
+//Assignment 2 - Joel Mascarenhas (1211194319) & Dhananjayan Santhanakrishnan (1211181423)
+
 #include "threads.h"
 int global_count = 0;
 
