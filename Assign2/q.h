@@ -21,13 +21,11 @@ TCB_t* newItem(){
 
 void AddQueue(TCB_t* q,TCB_t* ele)
 {
+  if(q==NULL){
+    q=ele;
+    return;
+  }
   TCB_t* temp = q->prev;
-  if(q==NULL)
-    {
-    q = ele;
-    }
-    else
-    {
     if(temp==NULL)
       {
       q->next = ele;
@@ -42,7 +40,6 @@ void AddQueue(TCB_t* q,TCB_t* ele)
       ele->next = q;
       q->prev = ele;
       }
-    }
 }
 
 TCB_t* DelQueue(TCB_t* q)
