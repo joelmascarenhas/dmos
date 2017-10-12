@@ -27,7 +27,7 @@ void prod (int *arg)
             counter = 0;
             V(&full);
           }
-	sleep(prod_delay);
+
     }
 }
 
@@ -62,6 +62,6 @@ int main()
               printf("\n");
           V(&mutex);
 
-        sleep(cons_delay);
+      
     }
 }
