@@ -1,4 +1,6 @@
+// Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
 #include "TCB.h"
+#include <errno.h>
 
 TCB_t*  head;
 TCB_t*  newQueue();
@@ -44,12 +46,9 @@ void AddQueue(TCB_t* q,TCB_t* ele)
 
 TCB_t* DelQueue(TCB_t* q)
 {
-  if(q == NULL)
+  if(q == NULL || q->next == q)
     {
-    return NULL;
-  }else if(q->next == NULL){
-    q->next = q;
-    q->prev = q;
+    printf("Queue is empty! \n");
     return NULL;
   }
   TCB_t *temp = q->next;
