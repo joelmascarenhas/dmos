@@ -11,7 +11,6 @@ void IncrementFunction1()
     global_count++;
 		local_count++;
     printf("\n\n Printing from Thread# %d :- Global value = %d and Local value = %d\n",currentThreadId(), global_count, local_count);
-
 		yield();
 	}
 }
@@ -24,7 +23,6 @@ void IncrementFunction2()
     global_count++;
 		local_count++;
     printf("\n\n Printing from Thread# %d :- Global value = %d and Local value = %d\n",currentThreadId(), global_count, local_count);
-
 		yield();
 	}
 }
@@ -37,7 +35,6 @@ void IncrementFunction3()
     global_count++;
 		local_count++;
     printf("\n\n Printing from Thread# %d :- Global value = %d and Local value = %d\n",currentThreadId(), global_count, local_count);
-		
 		yield();
 	}
 }
