@@ -1,6 +1,6 @@
 // Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
 // permission to use and distribute granted.
-// 
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include "sem.h"
