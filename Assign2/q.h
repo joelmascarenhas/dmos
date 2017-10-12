@@ -15,6 +15,7 @@ TCB_t* newItem(){
   TCB_t* q = (TCB_t*) malloc(sizeof(TCB_t));
   q->prev = q;
   q->next = q;
+
   return q;
 }
 
@@ -46,12 +47,17 @@ void AddQueue(TCB_t* q,TCB_t* ele)
 
 TCB_t* DelQueue(TCB_t* q)
 {
-  TCB_t *temp = q->next;
   if(q == NULL)
     {
     return NULL;
-    }
-  else
+  }else if(q->next == NULL){
+    q->next = q;
+    q->prev = q;
+    return NULL;
+  }
+  TCB_t *temp = q->next;
+
+  if(temp!= NULL)
     {
       q->next = temp->next;
       temp->next->prev = q;
