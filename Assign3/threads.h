@@ -23,6 +23,7 @@ void start_thread(void *func)
   //call addQ to add this TCB into the “ReadyQ” which is a global header pointer
 	AddQueue(ReadyQ, tcb_object);
 	printf("Thread %d created \n",thread_id_counter);
+	printf("Ready Queue Size: %d \n",sizeOfQ(tcb_object));
 }
 
 void run()
