@@ -1,5 +1,4 @@
-// (c) Partha Dasgupta 2009
-// permission to use and distribute granted.
+// Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
 
 #include <stdio.h>
 #include <string.h>
@@ -110,12 +109,12 @@ int main()
   r_sem = CreateSem(0);
   w_sem = CreateSem(0);
   createQueue();
-    /*start_thread(reader);
-    start_thread(reader);
-    start_thread(reader);*/
-    start_thread(reader);
-    start_thread(writer);
-    //start_thread(writer);
-    run();
-    while (1) sleep(1);
+  start_thread(reader);
+  start_thread(reader);
+  start_thread(reader);
+  start_thread(reader);
+  start_thread(writer);
+  start_thread(writer);
+  run();
+  while (1) sleep(1);
 }

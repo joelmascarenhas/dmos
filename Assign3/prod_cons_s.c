@@ -21,7 +21,7 @@ void prod ()
             buffer[in] = item_num++; in = (in+1) % N;
           V(mutex);
 	V(full);
-	sleep(prod_delay);
+	//sleep(prod_delay);
     }
 }
 
@@ -35,7 +35,7 @@ void cons()
             out = (out+1) % N;
           V(mutex);
 	V(empty);
-        sleep(cons_delay);
+        //sleep(cons_delay);
     }
 }
 
