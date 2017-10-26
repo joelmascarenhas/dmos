@@ -1,3 +1,5 @@
+// Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
+
 #include "threads.h"
 #define LOCKED 1
 #define UNLOCKED 0
@@ -21,7 +23,7 @@ void V(semaphore_t *sem);
 
 semaphore_t* CreateSem(int InputValue){
     semaphore_t* tempSem = (semaphore_t*) (malloc(sizeof(semaphore_t)));
-    tempSem->semQ = (TCB_t*) (malloc(sizeof(TCB_t)));
+    tempSem->semQ = newQueue();
     tempSem->count = InputValue;
     tempSem->locker = 1;
     return tempSem;
