@@ -1,5 +1,4 @@
-// (c) Partha Dasgupta 2009
-// permission to use and distribute granted.
+// Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
 
 #include <stdio.h>
 #include <string.h>
