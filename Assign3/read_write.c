@@ -110,12 +110,12 @@ int main()
   r_sem = CreateSem(0);
   w_sem = CreateSem(0);
   createQueue();
-    /*start_thread(reader);
     start_thread(reader);
-    start_thread(reader);*/
+    start_thread(reader);
+    start_thread(reader);
     start_thread(reader);
     start_thread(writer);
-    //start_thread(writer);
+    start_thread(writer);
     run();
     while (1) sleep(1);
 }
