@@ -5,6 +5,7 @@
 typedef struct port{
   semaphore_t *full,*empty,*accesslock;
   int messageArr[MESSAGES][10];
+  int outPort[MESSAGES];
   int inputPointer,outputPointer;
 }port;
 
@@ -14,10 +15,10 @@ port portObject[PORTS];
 void initPort();
 
 // Used to send message to the intended port
-void send(int intendedPort,int messageSent[]);
+void send(int intendedPort,int messageSent[],int outPort);
 
 // Used to receive message for the intended port
-void receive(int intendedPort, int messageReceived[]);
+void receive(int intendedPort, int messageReceived[], int *outPortR);
 
 
 void initPort(){
@@ -30,7 +31,7 @@ void initPort(){
   }
 }
 
-void send(int intendedPort,int messageSent[]){
+void send(int intendedPort,int messageSent[],int outPort){
   P(portObject[intendedPort].empty);
   P(portObject[intendedPort].accesslock);
 
@@ -39,23 +40,21 @@ void send(int intendedPort,int messageSent[]){
     }
 
     // portObject[intendedPort].messageArr[portObject[intendedPort].inputPointer] = messageSent;
-
-    portObject[intendedPort].in = (portObject[intendedPort].in+1)%MESSAGES;
-
+    portObject[intendedPort].outPort[portObject[intendedPort].inputPointer] = outPort;
+    portObject[intendedPort].inputPointer = (portObject[intendedPort].inputPointer+1)%MESSAGES;
   V(portObject[intendedPort].accesslock);
   V(portObject[intendedPort].full);
 }
 
 
-void receive(int intendedPort, int messageReceived[]){
+void receive(int intendedPort, int messageReceived[],int *outPortR){
   P(portObject[intendedPort].full);
   P(portObject[intendedPort].accesslock);
-
     for(int i=0 ; i < 10 ; i++){
       messageReceived[i]  = portObject[intendedPort].messageArr[portObject[intendedPort].outputPointer][i];
     }
-
-    portObject[port].out = (portObject[port].outputPointer+1)%MESSAGES;
+    *outPortR = portObject[intendedPort].outPort[portObject[intendedPort].outputPointer];
+    portObject[intendedPort].outputPointer = (portObject[intendedPort].outputPointer+1)%MESSAGES;
 
   V(portObject[intendedPort].accesslock);
   V(portObject[intendedPort].empty);
