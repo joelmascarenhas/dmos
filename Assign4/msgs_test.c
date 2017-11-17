@@ -1,3 +1,6 @@
+// Dhananjayan Santhanakrishnan - 1211181423 & Joel Mascarenhas - 1211194319
+// README - Since data[i] is being multiplied times 4 each time, the int datatype eventually overflows.
+
 #include "msgs.h"
 #define SERVER_PORT 0
 
@@ -22,7 +25,7 @@ void server(){
     printf("\n");
     printf("\n      Server sending data...\n");
     send(replyPort,data,dummyPort);
-    //sleep(1);
+    sleep(1);
   }
 }
 
@@ -57,7 +60,7 @@ void client(){
         printf(" %d ",data[i]);
       }
       printf("\n");
-      //sleep(1);
+      sleep(1);
   }
 }
 
