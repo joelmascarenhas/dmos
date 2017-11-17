@@ -13,7 +13,7 @@ void server(){
     printf("Server receiving data... \n");
     receive(SERVER_PORT,data,&replyPort);
     for(int i=0; i<10 ; i++){
-      data[i] = data[i] * 4;
+      data[i] = (data[i] * 4)+1;
     }
     printf("Data after processing in server: ");
     for(int i=0; i<10 ; i++){
@@ -22,7 +22,7 @@ void server(){
     printf("\n");
     printf("Server sending data...\n");
     send(replyPort,data,dummyPort);
-    sleep(1);
+    //sleep(1);
   }
 }
 
@@ -56,7 +56,7 @@ void client(){
         printf(" %d ",data[i]);
       }
       printf("\n");
-      sleep(1);
+      //sleep(1);
   }
 }
 
