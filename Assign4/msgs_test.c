@@ -10,17 +10,17 @@ void server(){
   int dummyPort = 0;
   printf("Inside Server...\n");
   while(1){
-    printf("Server receiving data... \n");
+    printf("\n      Server receiving data... \n");
     receive(SERVER_PORT,data,&replyPort);
     for(int i=0; i<10 ; i++){
-      data[i] = (data[i] * 4)+1;
+      data[i] = (data[i] * 4) + 1;
     }
-    printf("Data after processing in server: ");
+    printf("\n      Data after processing in server: ");
     for(int i=0; i<10 ; i++){
       printf(" %d ",data[i]);
     }
     printf("\n");
-    printf("Server sending data...\n");
+    printf("\n      Server sending data...\n");
     send(replyPort,data,dummyPort);
     //sleep(1);
   }
@@ -41,15 +41,16 @@ void client(){
   }
 
   while(1){
-      printf("Data before processing in client %d: ",tID);
+      printf("\nData before processing in client %d: ",tID);
       for(int i=0; i<10 ; i++){
         printf(" %d ",data[i]);
       }
       printf("\n");
-      printf("Client %d sending data...\n",tID);
+      printf("\nClient %d sending data...\n",tID);
       send(SERVER_PORT,data,replyPort);
-      printf("Client %d receiving data...\n",tID);
+
       receive(replyPort,data,&dummyPort);
+      printf("\nClient %d receiving data...\n",tID);
 
       printf("Data after processing in client %d: ",tID);
       for(int i=0; i<10 ; i++){
